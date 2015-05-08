@@ -3,16 +3,17 @@ import java.util.Scanner;
 
 public class IntToEng {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();  
         System.out.println(translateEng(input)); 
-    }
+	}
+
 
     // 数値を英訳する変換するメソッド
     static String translateEng(int n) {
-    	String answer = "";
-    	if(n/100 > 0){//100~999
+    	if(n/1000 > 0){//1000~999
+    		return forth(n);
+    	} else if(n/100 > 0){//100~999
     		return third(n);
     	} else if (n/10 > 0) {
     		return second(n); 		
@@ -26,7 +27,7 @@ public class IntToEng {
     }
     static String second(int n) {
     	String[] second1 = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-    	String[] second2 = {"","","twenty", "thirty", "forty", "fifty", "sixth", "seventy", "eighty", "ninety"};
+    	String[] second2 = {"","","twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
     	if (n/10 == 1) {//10~19
     		return  second1[n%10];
     	} else if (n/10 > 1) {//20~90
@@ -39,10 +40,20 @@ public class IntToEng {
     	}
     }
     static String third(int n) {
-    	if((n%100)==0){
+    	if((n/100)==0){
+    		return second(n%100);
+    	}else if((n%100)==0){
 			return first(n/100)+"hundred";
+		}else {
+			return first(n/100)+"hundred and "+second(n%100);
+
+		}
+    }
+    static String forth(int n) {
+    	if((n%1000)==0){
+			return first(n/1000)+"thousand";
 		}else{
-			return first(n/100)+"hundred "+second(n%100);
+			return first(n/1000)+"thousand "+third(n%1000);
 		}
     }
 }

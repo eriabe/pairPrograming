@@ -56,4 +56,32 @@ public class IntToEngTest {
 		String actual = ite.translateEng(1001);
 		assertThat(actual, is(expected));
 	}
+	@Test
+	public void test12340() {
+		IntToEng ite = new IntToEng();
+		String expected = "twelvethousand threehundred and forty";
+		String actual = ite.translateEng(12340);
+		assertThat(actual, is(expected));
+	}
+	@Test
+	public void test10010() {
+		IntToEng ite = new IntToEng();
+		String expected = "tenthousand ten";
+		String actual = ite.translateEng(10010);
+		assertThat(actual, is(expected));
+	}
+	@Test
+	public void test12340203() {
+		IntToEng ite = new IntToEng();
+		String expected = "twelvemillion threehundred and fortythousand twohundred and three";
+		String actual = ite.translateEng(12340203);
+		assertThat(actual, is(expected));
+	}
+	@Test
+	public void test1001010() {
+		IntToEng ite = new IntToEng();
+		String expected = "onemillion onethousand ten";
+		String actual = ite.translateEng(1001010);
+		assertThat(actual, is(expected));
+	}
 }

@@ -20,5 +20,26 @@ public class IntToEngTest {
 		String actual = ite.translateEng(21);
 		assertThat(actual, is(expected));
 	}
-
+	@Test
+	public void test598() {
+		IntToEng ite = new IntToEng();
+		String expected = "fivehundred ninety eight";
+		String actual = ite.translateEng(598);
+		assertThat(actual, is(expected));
+	}
+	
+	@Test
+	public void test100() {
+		IntToEng ite = new IntToEng();
+		String expected = "onehundred";
+		String actual = ite.translateEng(100);
+		assertThat(actual, is(expected));
+	}
+	@Test
+	public void test310() {
+		IntToEng ite = new IntToEng();
+		String expected = "threehundred ten";
+		String actual = ite.translateEng(310);
+		assertThat(actual, is(expected));
+	}
 }

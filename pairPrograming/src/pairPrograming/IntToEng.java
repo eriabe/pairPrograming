@@ -3,20 +3,9 @@ import java.util.Scanner;
 
 public class IntToEng {
 	public static void main(String[] args) {
-/*
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();  
         System.out.println(translateEng(input)); 
-    }*/
-	Scanner sc = new Scanner(System.in);
-    boolean a = true;
-    while (true) {
-    	int input = sc.nextInt();
-    	if (input == 000) {
-    		a = false;
-    	}
-    System.out.println(translateEng(input));
-    }
 	}
 
 

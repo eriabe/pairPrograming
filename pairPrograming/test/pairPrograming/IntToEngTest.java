@@ -23,7 +23,7 @@ public class IntToEngTest {
 	@Test
 	public void test598() {
 		IntToEng ite = new IntToEng();
-		String expected = "fivehundred ninety eight";
+		String expected = "fivehundred and ninety eight";
 		String actual = ite.translateEng(598);
 		assertThat(actual, is(expected));
 	}
@@ -38,8 +38,22 @@ public class IntToEngTest {
 	@Test
 	public void test310() {
 		IntToEng ite = new IntToEng();
-		String expected = "threehundred ten";
+		String expected = "threehundred and ten";
 		String actual = ite.translateEng(310);
+		assertThat(actual, is(expected));
+	}
+	@Test
+	public void test1234() {
+		IntToEng ite = new IntToEng();
+		String expected = "onethousand twohundred and thirty four";
+		String actual = ite.translateEng(1234);
+		assertThat(actual, is(expected));
+	}
+	@Test
+	public void test1001() {
+		IntToEng ite = new IntToEng();
+		String expected = "onethousand one";
+		String actual = ite.translateEng(1001);
 		assertThat(actual, is(expected));
 	}
 }

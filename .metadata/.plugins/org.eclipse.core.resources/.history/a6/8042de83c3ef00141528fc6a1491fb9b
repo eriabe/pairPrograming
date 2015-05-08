@@ -1,0 +1,79 @@
+package snakecamel;
+
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.junit.Test;
+
+public class SnakeCamelUtilTest {
+
+	@Test
+	public void testcapitalize() {
+		SnakeCamelUtil util = new SnakeCamelUtil();
+		String expected1 = "";
+		String actual1 = util.capitalize("");
+		assertThat(actual1, is(expected1));
+		
+		String expected2 = "A";
+		String actual2 = util.capitalize("a");
+		assertThat(actual2, is(expected2));
+		
+		String expected3= "Xyz";
+		String actual3 = util.capitalize("xyz");
+		assertThat(actual3, is(expected3));
+	}
+	@Test
+	public void testuncapitalize() {
+		SnakeCamelUtil util = new SnakeCamelUtil();
+		String expected1 = "";
+		String actual1 = util.uncapitalize("");
+		assertThat(actual1, is(expected1));
+		
+		String expected2 = "a";
+		String actual2 = util.uncapitalize("A");
+		assertThat(actual2, is(expected2));
+		
+		String expected3= "xyz";
+		String actual3 = util.uncapitalize("Xyz");
+		assertThat(actual3, is(expected3));
+	}
+	@Test
+	public void testSnakeToCamelcase() {
+		SnakeCamelUtil util = new SnakeCamelUtil();
+		
+		String expected1 = "Abc";
+		String actual1 = util.snakeToCamelcase("abc");
+		assertThat(actual1, is(expected1));
+		
+		String expected2 = "AbcDef";
+		String actual2 = util.snakeToCamelcase("abc_def");
+		assertThat(actual2, is(expected2));
+		
+		String expected3 = "AbcDefGh";
+		String actual3 = util.snakeToCamelcase("abc_def_gh");
+		assertThat(actual3, is(expected3));
+		
+		String expected4 = "AbcDefGh";
+		String actual4 = util.snakeToCamelcase("abc__def__gh");
+		assertThat(actual4, is(expected4));
+		
+		String expected5 = "AbcDef";
+		String actual5 = util.snakeToCamelcase("_abc_def_gh");
+		assertThat(actual5, is(expected5));
+		
+	}
+	@Test
+	public void testcamelToSnakecase() {
+		SnakeCamelUtil util = new SnakeCamelUtil();
+		String expected1 = "abc";
+		String actual1 = util.camelToSnakecase("Abc");
+		assertThat(actual1, is(expected1));
+		
+		String expected2 = "abc_def";
+		String actual2 = util.camelToSnakecase("AbcDef");
+		assertThat(actual2, is(expected2));
+		
+		String expected3 = "abc_def_gh";
+		String actual3 = util.camelToSnakecase("AbcDefGh");
+		assertThat(actual3, is(expected3));
+	}
+}

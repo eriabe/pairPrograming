@@ -1,0 +1,73 @@
+package snakecamel;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.junit.Test;
+
+public class Main {
+	public static void main(String[] args) { 
+
+			SnakeCamelUtil util = new SnakeCamelUtil();
+			String expected1 = "";
+			String actual1 = util.capitalize("");
+			assertThat(actual1, is(expected1));
+			
+			String expected2 = "A";
+			String actual2 = util.capitalize("a");
+			assertThat(actual2, is(expected2));
+			
+			String expected3= "Xyz";
+			String actual3 = util.capitalize("xyz");
+			assertThat(actual3, is(expected3));
+	
+			
+			String expected4 = "";
+			String actual4 = util.uncapitalize("");
+			assertThat(actual1, is(expected1));
+			
+			String expected5 = "a";
+			String actual5 = util.uncapitalize("A");
+			assertThat(actual2, is(expected2));
+			
+			String expected6= "xyz";
+			String actual6 = util.uncapitalize("Xyz");
+			assertThat(actual3, is(expected3));
+		
+			String expected7 = "Abc";
+			String actual7 = util.snakeToCamelcase("abc");
+			assertThat(actual1, is(expected1));
+			
+			String expected8 = "AbcDef";
+			String actual8 = util.snakeToCamelcase("abc_def");
+			assertThat(actual2, is(expected2));
+			
+			String expected9 = "AbcDefGh";
+			String actual9 = util.snakeToCamelcase("abc_def_gh");
+			assertThat(actual3, is(expected3));
+			
+			String expected10 = "AbcDefGh";
+			String actual10 = util.snakeToCamelcase("abc__def__gh");
+			assertThat(actual4, is(expected4));
+			
+			String expected11 = "AbcDef";
+			String actual11 = util.snakeToCamelcase("_abc_def_gh");
+			assertThat(actual5, is(expected5));
+		
+			String expected12 = "abc";
+			String actual12 = util.camelToSnakecase("Abc");
+			assertThat(actual1, is(expected1));
+			
+			String expected13 = "abc_def";
+			String actual13 = util.camelToSnakecase("AbcDef");
+			assertThat(actual2, is(expected2));
+			
+			String expected14 = "abc_def_gh";
+			String actual14 = util.camelToSnakecase("AbcDefGh");
+			assertThat(actual3, is(expected3));
+		}
+		
+
+
+	}
+
+
+}

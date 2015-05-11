@@ -10,7 +10,9 @@ public class IntToEng {
 
     // 数値を英訳する変換するメソッド
     static String translateEng(int n) {
-    	if (n/1000000 > 0) {
+    	if (n/1000000000 > 0) {
+    		return tenth(n);
+    	}else if (n/1000000 > 0) {
     		return seventh(n);
     	}else if(n/1000 > 0){//1000~9999
     		return forth(n);
@@ -44,26 +46,34 @@ public class IntToEng {
     	if((n/100)==0){
     		return second(n%100);
     	}else if((n%100)==0){
-			return first(n/100)+"hundred";
+			return first(n/100)+" hundred";
 		}else {
-			return first(n/100)+"hundred and "+second(n%100);
+			return first(n/100)+" hundred and "+second(n%100);
 		}
     }
     static String forth(int n) {
     	if((n/1000)==0){
     		return third(n%1000);
     	}else if((n%1000)==0){
-			return third(n/1000)+"thousand";
+			return third(n/1000)+" thousand";
 		}else{
-			return third(n/1000)+"thousand "+third(n%1000);
+			return third(n/1000)+" thousand "+third(n%1000);
 		}
     }
     static String seventh(int n) {
     	if((n%1000000)==0){
-			return third(n/1000000)+"million";
+			return third(n/1000000)+" million";
 		}else{
-			return third(n/1000000)+"million "+forth(n%1000000);
+			return third(n/1000000)+" million "+forth(n%1000000);
 		}
     }
+    static String tenth(int n) {
+    	if((n%1000000000)==0){
+			return seventh(n/1000000000)+" billion";
+		}else{
+			return third(n/1000000000)+" billion "+seventh(n%1000000000);
+		}
+    }
+    
 }
 

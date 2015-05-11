@@ -5,13 +5,14 @@ public class IntToEng {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();  
-        System.out.println(translateEng(input)); 
-	}
-
+        System.out.println(translateEng(input));
+    }	
 
     // 数値を英訳する変換するメソッド
     static String translateEng(int n) {
-    	if(n/1000 > 0){//1000~999
+    	if (n/1000000 > 0) {
+    		return seventh(n);
+    	}else if(n/1000 > 0){//1000~9999
     		return forth(n);
     	} else if(n/100 > 0){//100~999
     		return third(n);
@@ -46,14 +47,22 @@ public class IntToEng {
 			return first(n/100)+"hundred";
 		}else {
 			return first(n/100)+"hundred and "+second(n%100);
-
 		}
     }
     static String forth(int n) {
-    	if((n%1000)==0){
-			return first(n/1000)+"thousand";
+    	if((n/1000)==0){
+    		return third(n%1000);
+    	}else if((n%1000)==0){
+			return third(n/1000)+"thousand";
 		}else{
-			return first(n/1000)+"thousand "+third(n%1000);
+			return third(n/1000)+"thousand "+third(n%1000);
+		}
+    }
+    static String seventh(int n) {
+    	if((n%1000000)==0){
+			return third(n/1000000)+"million";
+		}else{
+			return third(n/1000000)+"million "+forth(n%1000000);
 		}
     }
 }
